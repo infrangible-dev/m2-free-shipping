@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<!--
+ * @author      Andreas Knollmann
+ * @copyright   2014-2024 Softwareentwicklung Andreas Knollmann
+ * @license     http://www.opensource.org/licenses/mit-license.php MIT
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="carriers">
+            <group id="freeshipping">
+                <field id="check_product_attributes" translate="label" sortOrder="50" type="select" showInDefault="1" showInWebsite="1" canRestore="1">
+                    <label>Check Product Attributes</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="product_attributes" translate="label" sortOrder="51" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Attributes</label>
+                    <frontend_model>Infrangible\FreeShipping\Block\Adminhtml\Form\Field\ProductAttributeValues</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <depends>
+                        <field id="check_product_attributes">1</field>
+                    </depends>
+                </field>
+                <field id="disable_other" translate="label" sortOrder="60" type="select" showInDefault="1" showInWebsite="1" canRestore="1">
+                    <label>Disable other delivery methods</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
