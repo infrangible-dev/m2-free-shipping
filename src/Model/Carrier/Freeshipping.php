@@ -136,16 +136,14 @@ class Freeshipping
             $productAttributes = $this->json->decode($productAttributes);
 
             foreach ($productAttributes as $productAttributeData) {
-                $attributeId = $this->arrays->getValue($productAttributeData, 'product_attribute');
+                $attributeCode = $this->arrays->getValue($productAttributeData, 'product_attribute');
                 $value = $this->arrays->getValue($productAttributeData, 'value');
                 $any = $this->arrays->getValue($productAttributeData, 'any');
 
                 $attributeResult = !$any;
 
-                if ($attributeId) {
+                if ($attributeCode) {
                     try {
-                        $attribute = $this->attributeHelper->getAttribute(Product::ENTITY, $attributeId);
-
                         foreach ($request->getAllItems() as $item) {
                             if ($item instanceof AbstractItem) {
                                 $product = $item->getProduct();
@@ -153,7 +151,7 @@ class Freeshipping
                                 $productValue = $this->attributeHelper->getAttributeValue(
                                     $dbAdapter,
                                     Product::ENTITY,
-                                    $attribute->getAttributeCode(),
+                                    $attributeCode,
                                     intval($product->getId()),
                                     intval($product->getStoreId())
                                 );
