@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Infrangible\FreeShipping\Block\Adminhtml\Form\Field;
 
-use Infrangible\Core\Model\Config\Source\Attribute\Product;
+use Infrangible\Core\Model\Config\Source\Attribute\ProductAttributeCode;
 use Magento\Framework\View\Element\Context;
 use Magento\Framework\View\Element\Html\Select;
 
@@ -16,15 +16,15 @@ use Magento\Framework\View\Element\Html\Select;
 class ProductAttribute
     extends Select
 {
-    /** @var Product */
+    /** @var ProductAttributeCode */
     protected $sourceProductAttribute;
 
     /**
      * @param Context $context
-     * @param Product $sourceProductAttribute
+     * @param ProductAttributeCode $sourceProductAttribute
      * @param array   $data
      */
-    public function __construct(Context $context, Product $sourceProductAttribute, array $data = []) {
+    public function __construct(Context $context, ProductAttributeCode $sourceProductAttribute, array $data = []) {
         parent::__construct($context, $data);
 
         $this->sourceProductAttribute = $sourceProductAttribute;
